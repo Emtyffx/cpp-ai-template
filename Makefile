@@ -18,6 +18,13 @@ EIGEN_LDDFLAGS := $(shell pkg-config --libs eigen3)
 C_FLAGS += $(EIGEN_CFLAGS)
 LDD_FLAGS += $(EIGEN_LDDFLAGS)
 
+ifeq ($(OS),Windows_NT)
+	EXE := .exe
+else
+	EXE :=
+endif
+
+TARGET += $(EXE)
 
 all: $(BUILD_DIR)/$(TARGET)
 
